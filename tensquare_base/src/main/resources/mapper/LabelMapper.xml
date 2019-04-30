@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tensquare.base.dao.LabelMapper">
+
+    <select id="findAll" resultType="com.tensquare.base.pojo.Label">
+      select * from tb_label;
+    </select>
+
+    <select id="findById" resultType="com.tensquare.base.pojo.Label">
+      select * from tb_label where id = #{id};
+    </select>
+
+    <select id="add" parameterType="com.tensquare.base.pojo.Label">
+      insert into tb_label (id,labelname,state,count,recommend,fans) values
+      (#{id},#{labelName},#{state},#{count},#{recommend},#{fans});
+    </select>
+
+    <select id="update" parameterType="com.tensquare.base.pojo.Label">
+      update tb_label set labelname = #{labelName},state=#{state},count=#{count},recommend=#{recommend},fans=#{fans}
+        where id = #{id};
+    </select>
+
+    <select id="deleteById">
+        delete from tb_label where id = #{id};
+    </select>
+
+    <select id="findSearch" parameterType="Map" resultType="com.tensquare.base.pojo.Label">
+        select * from tb_label limit #{pageIndex},#{size};
+    </select>
+</mapper>

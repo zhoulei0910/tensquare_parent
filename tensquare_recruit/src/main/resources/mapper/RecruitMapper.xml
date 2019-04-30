@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tensquare.recruit.dao.RecruitMapper">
+
+    <select id="findHotList" resultType="com.tensquare.recruit.pojo.Enterprise">
+        select * from tb_enterprise where ishot = 1;
+    </select>
+
+    <select id="findTop4ByStateOrderByCreatetimeDesc" resultType="com.tensquare.recruit.pojo.Recruit">
+        select * from tb_recruit where state = #{state} order by createtime desc;
+    </select>
+
+    <select id="findTop12ByStateNotOrderByCreatetimeDesc" resultType="com.tensquare.recruit.pojo.Recruit">
+        select * from tb_recruit where state >0 order by createtime desc;
+    </select>
+</mapper>
